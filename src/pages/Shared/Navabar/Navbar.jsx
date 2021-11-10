@@ -117,6 +117,14 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
+              <Link
+                className="md:p-4 py-2 block hover:text-purple-400"
+                to="/glasses"
+              >
+                Glasses
+              </Link>
+            </li>
+            <li>
               {user?.email ? (
                 <Link
                   onClick={logOut}

@@ -5,6 +5,8 @@ import Home from "./pages/Home/Home/Home";
 import Login from "./pages/Authentication/Login/Login";
 import Register from "./pages/Authentication/Register/Register";
 import AuthProvider from "./contex/AuthProvider";
+import PrivateRoute from "./pages/Private/PrivateRoute/PrivateRoute";
+import Glasses from "./pages/Glasses/Glasses";
 function App() {
   return (
     <div className="app">
@@ -19,12 +21,16 @@ function App() {
               <Route path="/home">
                 <Home />
               </Route>
+              <Route path="/glasses">
+                <Glasses />
+              </Route>
               <Route path="/login">
                 <Login />
               </Route>
               <Route path="/register">
                 <Register />
               </Route>
+              <PrivateRoute path="/dashboard"></PrivateRoute>
             </Switch>
           </div>
         </Router>

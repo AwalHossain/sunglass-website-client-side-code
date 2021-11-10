@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import "./Login.css";
 const Login = () => {
@@ -8,6 +8,8 @@ const Login = () => {
   const { signInUser, isLoading } = useAuth();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { register, handleSubmit } = useForm();
+  const history = useHistory();
+  const location = useLocation();
   //Css
   const formStyle =
     "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2";
@@ -16,7 +18,7 @@ const Login = () => {
 
   //Onsubmit fuctionc
   const onSubmit = (data) => {
-    signInUser(data.email, data.password);
+    signInUser(data.email, data.password, location, history);
     console.log(data);
   };
 

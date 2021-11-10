@@ -42,12 +42,14 @@ const useFirebase = () => {
       })
       .finally(() => setLoading(false));
   };
-  const signInUser = (email, password) => {
+  const signInUser = (email, password, location, history) => {
     setLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         // ...
+        const destination = location?.state?.from || "/";
+        history.push(destination);
         console.log(user);
       })
       .catch((error) => {
