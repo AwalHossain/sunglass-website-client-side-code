@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 const Register = () => {
   const { registerUser, isLoading } = useAuth();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const hitory = useHistory();
   const {
     register,
     handleSubmit,
@@ -18,7 +19,7 @@ const Register = () => {
 
   //Onsubmit fuctionc
   const onSubmit = (data) => {
-    registerUser(data.email, data.password, data.name);
+    registerUser(data.email, data.password, data.name, hitory);
     console.log(data);
   };
   //error message

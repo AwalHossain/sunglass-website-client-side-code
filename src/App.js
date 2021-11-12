@@ -7,6 +7,9 @@ import Register from "./pages/Authentication/Register/Register";
 import AuthProvider from "./contex/AuthProvider";
 import PrivateRoute from "./pages/Private/PrivateRoute/PrivateRoute";
 import Glasses from "./pages/Glasses/Glasses";
+import Admin from "./pages/Admin/Admin/Admin";
+import Dashboard from "./pages/Dashboard/DashBoard/Dashboard";
+import OrderRiview from "./pages/OrderReview/OrderRiview";
 function App() {
   return (
     <div className="app">
@@ -29,6 +32,15 @@ function App() {
               </Route>
               <Route path="/register">
                 <Register />
+              </Route>
+              <Route path="/dashboard">
+                <Dashboard />
+              </Route>
+              <Route path="/order/:serviceId">
+                <OrderRiview />
+              </Route>
+              <Route path="/admin">
+                <Admin />
               </Route>
               <PrivateRoute path="/dashboard"></PrivateRoute>
             </Switch>

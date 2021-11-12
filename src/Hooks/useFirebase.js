@@ -21,6 +21,7 @@ const useFirebase = () => {
         // Signed in
         const user = userCredential.user;
         const newUser = { email, displayName: name };
+        saveUser(email, name, password);
         setUser(newUser);
         updateProfile(auth.currentUser, {
           displayName: name,
@@ -29,12 +30,12 @@ const useFirebase = () => {
             // Profile updated!
             // ...
             console.log(user);
-            history.push("/");
           })
           .catch((error) => {
             // An error occurred
             // ...
           });
+        history.push("/");
       })
       .catch((error) => {
         alert(error.message);
@@ -66,6 +67,17 @@ const useFirebase = () => {
       .catch((error) => {
         // An error happened.
       });
+  };
+  //Sending user email & password to the database
+  const saveUser = (email, displayName, password) => {
+    const user = { email, displayName, password };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }).then();
   };
   // Get the currently signed-in user
   useEffect(() => {
