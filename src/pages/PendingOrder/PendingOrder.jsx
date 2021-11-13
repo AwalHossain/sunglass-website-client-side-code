@@ -61,10 +61,10 @@ const PendingOrder = (props) => {
       {/* Right part */}
       <div className="w-full">
         <form className={formStyle} onSubmit={handleSubmit(onSubmit)}>
-          <h1 className="title text-4xl text-center">LensCart</h1>
-          <h3 className="text-sm text-center px-4 my-3">
-            Register to get cool lens
-          </h3>
+          <h1 className="title text-4xl text-center">
+            Provide Your Address for Order
+          </h1>
+          <h3 className="text-sm text-center px-4 my-3 text-xl">LensKart</h3>
           <input
             className={inputStyle}
             placeholder="You Name"

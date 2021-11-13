@@ -17,7 +17,6 @@ const OrderRiview = () => {
   }, [serviceId]);
   return (
     <div className="mt-20">
-      <h2>This Is from order Rieview</h2>
       {service.map((item) => (
         <PendingOrder item={item} key={item._id}></PendingOrder>
       ))}

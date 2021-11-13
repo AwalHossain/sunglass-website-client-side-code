@@ -10,6 +10,19 @@
   .text-wrapper {
     position: absolute;
     left: 8%;
+    top: 20%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    max-width: 480 px;
+    text-align: justify;
+    margin-left: 25px;
+  }
+}
+@media (min-width: 1068px) {
+  .text-wrapper {
+    position: absolute;
+    left: 8%;
     top: 50%;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);

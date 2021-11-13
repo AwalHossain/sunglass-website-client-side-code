@@ -67,34 +67,39 @@ const Navbar = () => {
               md:justify-between 
               md:pt-0"
           >
-            {!admin && (
-              <>
-                <li>
-                  <Link
-                    className="md:p-4 py-2 block hover:text-purple-400"
-                    to="/home"
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="md:p-4 py-2 block hover:text-purple-400"
-                    to="/glasses"
-                  >
-                    Explore
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="md:p-4 py-2 block hover:text-purple-400"
-                    to="/dashboard"
-                  >
-                    Dashboard
-                  </Link>
-                </li>
-              </>
-            )}
+            <li>
+              <Link
+                className="md:p-4 py-2 block hover:text-purple-400"
+                to="/home"
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="md:p-4 py-2 block hover:text-purple-400"
+                to="/glasses"
+              >
+                Explore
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="md:p-4 py-2 block hover:text-purple-400"
+                to="/dashboard"
+              >
+                Dashboard
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="md:p-4 py-2 block hover:text-purple-400"
+                to="/about"
+              >
+                About
+              </Link>
+            </li>
+
             {admin && (
               <li>
                 <Link

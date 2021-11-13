@@ -11,6 +11,8 @@ import Admin from "./pages/Admin/Admin/Admin";
 import Dashboard from "./pages/Dashboard/DashBoard/Dashboard";
 import OrderRiview from "./pages/OrderReview/OrderRiview";
 import AdminRoute from "./pages/Private/AdminRoute/AdminRoute";
+import AboutUs from "./pages/AboutUs/AboutUs";
+import NotFound from "./pages/NotFound/NotFound";
 function App() {
   return (
     <div className="app">
@@ -23,6 +25,9 @@ function App() {
               </Route>
               <Route path="/home">
                 <Home />
+              </Route>
+              <Route path="/about">
+                <AboutUs />
               </Route>
               <Route path="/glasses">
                 <Glasses />
@@ -42,6 +47,9 @@ function App() {
               <AdminRoute path="/admin">
                 <Admin />
               </AdminRoute>
+              <Route exact path="*">
+                <NotFound />
+              </Route>
             </Switch>
           </div>
         </Router>

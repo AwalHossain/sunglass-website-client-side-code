@@ -26,7 +26,7 @@ const MakeAdmin = () => {
   };
   return (
     <div>
-      <h2>Make Admin</h2>
+      <h2 className="text-center text-2xl">Make Admin</h2>
       <div>
         <form className={formStyle} onSubmit={handleSubmit(onSubmit)}>
           <input

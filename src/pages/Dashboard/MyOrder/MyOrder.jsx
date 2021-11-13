@@ -14,23 +14,26 @@ const MyOrder = () => {
     );
   }, [control, user?.email]);
   const handleClick = (id) => {
-    trackPromise(
-      fetch(`https://calm-crag-56953.herokuapp.com/removeOrder/${id}`, {
-        method: "DELETE",
-        headers: {
-          "content-type": "application/json",
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount) {
-            alert("Deleted");
-            setControl(!control);
-          } else {
-            setControl(false);
-          }
+    const confirm = window.confirm("Are you sure want to delete?");
+    if (confirm) {
+      trackPromise(
+        fetch(`https://calm-crag-56953.herokuapp.com/removeOrder/${id}`, {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+          },
         })
-    );
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              alert("Deleted");
+              setControl(!control);
+            } else {
+              setControl(false);
+            }
+          })
+      );
+    }
   };
   return (
     <div>
