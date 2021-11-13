@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import "./Navbar.css";
 const Navbar = () => {
-  const { user, logOut, setLoading } = useAuth();
+  const { user, logOut, setLoading, admin } = useAuth();
   useEffect(() => {
     const button = document.querySelector("#menu-button");
     const menu = document.querySelector("#menu");
@@ -67,38 +67,44 @@ const Navbar = () => {
               md:justify-between 
               md:pt-0"
           >
-            <li>
-              <Link
-                className="md:p-4 py-2 block hover:text-purple-400"
-                to="/home"
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="md:p-4 py-2 block hover:text-purple-400"
-                to="/glasses"
-              >
-                Glasses
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="md:p-4 py-2 block hover:text-purple-400"
-                to="/dashboard"
-              >
-                Dashboard
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="md:p-4 py-2 block hover:text-purple-400"
-                to="/admin"
-              >
-                Admin
-              </Link>
-            </li>
+            {!admin && (
+              <>
+                <li>
+                  <Link
+                    className="md:p-4 py-2 block hover:text-purple-400"
+                    to="/home"
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="md:p-4 py-2 block hover:text-purple-400"
+                    to="/glasses"
+                  >
+                    Explore
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="md:p-4 py-2 block hover:text-purple-400"
+                    to="/dashboard"
+                  >
+                    Dashboard
+                  </Link>
+                </li>
+              </>
+            )}
+            {admin && (
+              <li>
+                <Link
+                  className="md:p-4 py-2 block hover:text-purple-400"
+                  to="/admin"
+                >
+                  Admin
+                </Link>
+              </li>
+            )}
             <li>
               {user?.email ? (
                 <Link

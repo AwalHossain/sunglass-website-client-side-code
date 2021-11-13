@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { trackPromise } from "react-promise-tracker";
 
 const AddItem = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -11,32 +12,33 @@ const AddItem = () => {
   const inputStyle =
     "bg-white h-12 w-full px-5 pr-10 mt-5 rounded-full text-sm border-2 border-solid border-gray-300 focus:outline-none";
 
+  //Sending data to the database
   const onSubmit = (data) => {
+    setLoading(true);
     console.log(data);
     setInfo(data);
-    fetch("http://localhost:5000/addItem", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(info),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.insertedId) {
-          setLoading(false);
-          reset();
-          alert("data added");
-        }
-      });
-    setLoading(true);
+    trackPromise(
+      fetch("https://calm-crag-56953.herokuapp.com/addItem", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.insertedId) {
+            reset();
+            alert("data added");
+            setLoading(false);
+          }
+        })
+    );
   };
 
-  //Sending data to the database
-  useEffect(() => {}, []);
   return (
-    <div className="w-1/2">
+    <div className="w-full">
       <form className={formStyle} onSubmit={handleSubmit(onSubmit)}>
         <h1 className="title text-4xl text-center">LensCart</h1>
         <h3 className="text-sm text-center px-4 my-3">

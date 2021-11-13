@@ -6,8 +6,8 @@ const Payment = () => {
       <h2 className="text-center text-4xl font-bold my-5">
         Payment system cooming soon......
       </h2>
-      <div class="space-y-16 w-full">
-        <div class="w-96 h-56 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110">
+      <div class="space-y-16 w-full px-4">
+        <div class="w-72 md:w-96  h-56 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110">
           <img
             class="relative object-cover w-full h-full rounded-xl"
             src="https://i.imgur.com/kGkSg1v.png"

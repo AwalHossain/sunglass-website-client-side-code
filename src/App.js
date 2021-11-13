@@ -10,12 +10,12 @@ import Glasses from "./pages/Glasses/Glasses";
 import Admin from "./pages/Admin/Admin/Admin";
 import Dashboard from "./pages/Dashboard/DashBoard/Dashboard";
 import OrderRiview from "./pages/OrderReview/OrderRiview";
+import AdminRoute from "./pages/Private/AdminRoute/AdminRoute";
 function App() {
   return (
     <div className="app">
       <AuthProvider>
         <Router>
-          <Navbar></Navbar>
           <div>
             <Switch>
               <Route exact path="/">
@@ -33,16 +33,15 @@ function App() {
               <Route path="/register">
                 <Register />
               </Route>
-              <Route path="/dashboard">
+              <PrivateRoute path="/dashboard">
                 <Dashboard />
-              </Route>
-              <Route path="/order/:serviceId">
+              </PrivateRoute>
+              <PrivateRoute path="/order/:serviceId">
                 <OrderRiview />
-              </Route>
-              <Route path="/admin">
+              </PrivateRoute>
+              <AdminRoute path="/admin">
                 <Admin />
-              </Route>
-              <PrivateRoute path="/dashboard"></PrivateRoute>
+              </AdminRoute>
             </Switch>
           </div>
         </Router>

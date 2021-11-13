@@ -8,11 +8,13 @@ import {
   signOut,
 } from "firebase/auth";
 import initializeFirebase from "../firebase/firebase.init";
+import { trackPromise } from "react-promise-tracker";
 
 initializeFirebase();
 const useFirebase = () => {
   const [user, setUser] = useState({});
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
+  const [admin, setAdmin] = useState("");
   const auth = getAuth();
   const registerUser = (email, password, name, history) => {
     setLoading(true);
@@ -35,6 +37,7 @@ const useFirebase = () => {
             // An error occurred
             // ...
           });
+
         history.push("/");
       })
       .catch((error) => {
@@ -43,15 +46,30 @@ const useFirebase = () => {
       })
       .finally(() => setLoading(false));
   };
+  // Admin
+  useEffect(() => {
+    trackPromise(
+      fetch(`https://calm-crag-56953.herokuapp.com/users/${user.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setAdmin(data.admin);
+        })
+    );
+  }, [user.email, admin]);
   const signInUser = (email, password, location, history) => {
     setLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         // ...
-        const destination = location?.state?.from || "/";
+        if (admin) {
+          return history.push("/admin");
+        }
+
+        let destination = location?.state?.from || "/dashboard";
+
         history.push(destination);
-        console.log(user);
+        console.log(admin);
       })
       .catch((error) => {
         alert(error.message);
@@ -60,24 +78,28 @@ const useFirebase = () => {
   };
   //Logout
   const logOut = () => {
+    setLoading(true);
     signOut(auth)
       .then(() => {
         // Sign-out successful.
       })
       .catch((error) => {
         // An error happened.
-      });
+      })
+      .finally(() => setLoading(false));
   };
   //Sending user email & password to the database
   const saveUser = (email, displayName, password) => {
     const user = { email, displayName, password };
-    fetch("http://localhost:5000/users", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(user),
-    }).then();
+    trackPromise(
+      fetch("https://calm-crag-56953.herokuapp.com/users", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(user),
+      }).then()
+    );
   };
   // Get the currently signed-in user
   useEffect(() => {
@@ -96,11 +118,13 @@ const useFirebase = () => {
       setLoading(false);
     });
     return () => unsubscribed();
-  }, []);
+  }, [auth]);
+
   return {
     registerUser,
     signInUser,
     user,
+    admin,
     isLoading,
     logOut,
   };

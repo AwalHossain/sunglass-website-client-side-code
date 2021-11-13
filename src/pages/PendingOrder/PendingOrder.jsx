@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router";
 import useAuth from "../../Hooks/useAuth";
 
 const PendingOrder = (props) => {
   const { register, handleSubmit, reset } = useForm();
-  const [info, setInfo] = useState("");
   const [isLoading, setLoading] = useState(false);
+  const history = useHistory();
   const formStyle =
     "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2";
   const inputStyle =
@@ -20,9 +21,9 @@ const PendingOrder = (props) => {
     data.img = img;
     data.price = price;
     data.email = user?.email;
-    data.status = "pending";
+    data.status = "Pending";
     //Sending order to the database
-    fetch("http://localhost:5000/order", {
+    fetch("https://calm-crag-56953.herokuapp.com/order", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -35,7 +36,8 @@ const PendingOrder = (props) => {
         if (data.insertedId) {
           setLoading(false);
           reset();
-          alert("data added");
+          alert("Your order Placed");
+          history.push("/");
         }
       });
     setLoading(true);
@@ -49,7 +51,7 @@ const PendingOrder = (props) => {
           <img className="w-full h-auto" src={img} alt="" />
         </div>
         <div>
-          <div className="flex">
+          <div className="flex justify-between">
             <h3 className=" text-4xl">{title}</h3>
             <h4 className=" text-4xl">${price}</h4>
           </div>
@@ -71,10 +73,14 @@ const PendingOrder = (props) => {
           />
           <input
             className={inputStyle}
+            placeholder="You Mail"
+            value={user?.email}
+            {...register("mail", { required: true })}
+          />
+          <input
+            className={inputStyle}
             placeholder="Phone Number"
-            {...register("phone_number", {
-              required: true,
-            })}
+            {...register("phone_number")}
           />
           <input
             className={inputStyle}
