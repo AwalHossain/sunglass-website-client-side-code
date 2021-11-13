@@ -9,9 +9,9 @@ Our website link: https://lens-cart.web.app/
 2.Thinnest & Scratch Free Lenses \
 3.We provide 14days money back gurrenty\
 4. We offer you great deal that no one does \
-5. Customers are our main focus. You can check our customer satisfactory list\
-6. 1 Year Warranty\
-7. Every year a specific time you give 50 customer a free travel pass with their desire place\
+5. Customers are our main focus. You can check our customer satisfactory list \
+6. 1 Year Warranty \
+
 
 
 ### What is this website for
