@@ -5,14 +5,13 @@ Our website link: https://lens-cart.web.app/
 
 ## Why you will choose us
 
-1.We provide best eyeglasses anywhere in the world \
-2.Thinnest & Scratch Free Lenses \
-3.We provide 14days money back gurrenty\
-4. We offer you great deal that no one does \
-5. Customers are our main focus. You can check our customer satisfactory list \
-6. 1 Year Warranty \
-
-
+1. This is a niche product website where can find all kinds of lenses including sunglasses, eyeglasses, frame\
+2. Registration & Login system secured by Firebase \
+3. It has a dashboard that gives access to different routes between admin & user\
+4. CRUD system implemented \
+5. Admin can only add another user as an admin \
+6. Users can delete their order in real-time \
+7. User can add a review & it will show on the homepage review section
 
 ### What is this website for
 

@@ -66,7 +66,7 @@ const useFirebase = () => {
           return history.push("/admin");
         }
 
-        let destination = location?.state?.from || "/dashboard";
+        let destination = location?.state?.from || "/";
 
         history.push(destination);
         console.log(admin);

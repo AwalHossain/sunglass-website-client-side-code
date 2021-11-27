@@ -1,0 +1,30 @@
+.wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave svg {
+  position: relative;
+  display: block;
+  width: calc(103% + 1.3px);
+  height: 262px;
+}
+
+.wave .shape-fill {
+  fill: #ffff;
+}
+.red {
+  background: #dd3f31;
+}
+section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 400px;
+  padding-top: 100px;
+}
